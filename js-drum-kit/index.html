@@ -62,6 +62,7 @@
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
             if(!audio) return;
 
+            audio.currentTime = 0; // reset time for sound
             audio.play();
         });
     </script>
