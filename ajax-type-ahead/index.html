@@ -24,6 +24,14 @@
         fetch(endpoint)
             .then(res => res.json())
             .then(data => cities.push(...data))
+
+        function findMatches(wordToMatch, cities) {
+            return cities.filter( place => {
+                // create regex to filter based on wordToMatch param
+                const regex = new RegExp(wordToMatch, 'gi'); // g for global, i for non-case sensitive
+                return place.city.match(regex) || place.state.match(regex);
+            })
+        }
     </script>
 </body>
 
