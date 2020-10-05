@@ -30,10 +30,22 @@
             ctx.moveTo(lastX,lastY);
             ctx.lineTo(e.offsetX, e.offsetY);
             ctx.stroke();
+
+            // destructuring the array ES6 way
+            // [lastX, lastY] = [e.offsetX, e.offsetY];
+
+            // classic way
+            lastX = e.offsetX;
+            lastY = e.offsetY;
         }
 
+        canvas.addEventListener('mousedown', () => {
+            isDrawing = true;
+            [lastX, lastY] = [e.offsetX, e.offsetY];
+        });
+        
+        
         canvas.addEventListener('mousemove', draw);
-        canvas.addEventListener('mousedown', () => isDrawing = true);
         canvas.addEventListener('mouseup', () => isDrawing = false);
         canvas.addEventListener('mouseout', () => isDrawing = false);
     </script>
