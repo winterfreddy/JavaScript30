@@ -29,12 +29,19 @@ function updateButton() {
 }
 
 function skip() {
-    console.log(this.dataset);
     video.currentTime += parseFloat(this.dataset.skip);
 }
 
 function handleRangeUpdate() {
     video[this.name] = this.value;
+}
+
+function handleProgress() {
+    // calculate progress percentage
+    const percent = (video.currentTime/video.duration) * 100;
+
+    // change flexbasis to represent current video progress
+    progressBar.style.flexBasis = `${percent}%`;
 }
 
 // lastly hook up the event listeners to those functions
@@ -45,6 +52,9 @@ video.addEventListener('click', togglePlay);
 // eventlisteners to dynamically change buttons
 video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
+
+// eventlistener for video progress
+video.addEventListener('timeupdate', handleProgress);
 
 // for play/pause button
 toggle.addEventListener('click', togglePlay);
