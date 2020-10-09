@@ -23,9 +23,19 @@ function togglePlay() {
     }
 }
 
+function updateButton() {
+    const icon = this.paused ? '►' : '❚ ❚';
+    toggle.textContent = icon;
+}
+
 // lastly hook up the event listeners to those functions
 
 // for on-screen click to play/pause
 video.addEventListener('click', togglePlay);
+
+// eventlisteners to dynamically change buttons
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+
 // for play/pause button
 toggle.addEventListener('click', togglePlay);
