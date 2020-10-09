@@ -28,6 +28,11 @@ function updateButton() {
     toggle.textContent = icon;
 }
 
+function skip() {
+    console.log(this.dataset);
+    video.currentTime += parseFloat(this.dataset.skip);
+}
+
 // lastly hook up the event listeners to those functions
 
 // for on-screen click to play/pause
@@ -39,3 +44,8 @@ video.addEventListener('pause', updateButton);
 
 // for play/pause button
 toggle.addEventListener('click', togglePlay);
+
+// for skip buttons
+skipButtons.forEach( button => {
+    button.addEventListener('click', skip);
+})
