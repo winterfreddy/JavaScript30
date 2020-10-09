@@ -80,4 +80,17 @@ ranges.forEach( range => {
 })
 
 // handle dynamic scrub
+let mousedown = false;
 progress.addEventListener('click', scrub);
+
+// way one
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+
+// way two
+// progress.addEventListener('mousemove', () => {
+//     if(mousedown) {
+//         scrub();
+//     }
+// });
+progress.addEventListener('mousedown', () => mousedown = true);
+progress.addEventListener('mouseup', () => mousedown = false);
