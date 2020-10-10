@@ -15,6 +15,14 @@
   window.addEventListener( 'keyup', (e) => {
     console.log(e.key);
     pressed.push(e.key);
+    console.log(secretCode.length);
+    // take the last recent characters of secretCode size
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+
+    if (pressed.join('') === secretCode) {
+      console.log("You got it!");
+    }
+
     console.log(pressed);
   })
 
