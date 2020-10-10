@@ -7,6 +7,17 @@
 </head>
 <body>
 <script>
+  // an array to store secret key pass
+  const pressed = [];
+  const secretCode =  'secret' // secret code
+
+  // listen for keyboard input
+  window.addEventListener( 'keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+    console.log(pressed);
+  })
+
 </script>
 </body>
 </html>
