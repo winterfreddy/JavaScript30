@@ -162,6 +162,7 @@
   </div>
 
   <script>
+    // this basically improves performance by reducing how much to listen
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
@@ -176,6 +177,30 @@
         if (callNow) func.apply(context, args);
       };
     }
+
+    const sliderImages = document.querySelectorAll('.slide-in');
+
+    function checkSlide(e) {
+      sliderImages.forEach( slideImage => {
+        // calculate the px at where the image is 50% viewable
+        const slideInAt = (window.scrollY + window.innerHeight) - slideImage.height/2;
+        // calculate the bottom of the iamge
+        const imageBottom = slideImage.offsetTop + slideImage.height;
+        // calculate 50% of image shown
+        const isImageHalfShown = slideInAt > slideImage.offsetTop;
+        // checks to see if we passed the image onscreen or not
+        const notScrolledPast = window.scrollY < imageBottom;
+
+        if(isImageHalfShown && notScrolledPast) {
+          slideImage.classList.add('active');
+        }
+        else {
+          slideImage.classList.remove('active');
+        }
+      })
+    }
+
+    window.addEventListener('scroll', debounce(checkSlide));
 
   </script>
 
