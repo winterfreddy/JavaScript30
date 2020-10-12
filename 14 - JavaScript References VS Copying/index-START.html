@@ -68,12 +68,48 @@
     };
 
     // and think we make a copy:
+    // const newbie = person; // <- just like the array, it modifies its reference
+    // newbie.number = 28;
 
     // how do we take a copy instead?
+    const newbie2 = Object.assign({}, person, { number: 28, age: 21 });
+    console.log("person object: ", person)
+    console.log("newbie2 object: ", newbie2);
 
     // We will hopefully soon see the object ...spread
+    // const newbie3 = {...person}; // <- does not exist yet...
 
-    // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+    // Things to note - this is only 1 level deep - both for Arrays and Objects.
+    // lodash has a cloneDeep method, but you should think twice before using it.
+
+    const developer = {
+      name: 'John',
+      age: '32',
+      social: {
+        instagram: "@Johnny",
+        twitter: "@JohnnyUli"
+      }
+    }
+
+    console.clear();
+    console.log(developer);
+
+    const devAlias = Object.assign({}, developer);
+    // try like changing one attribute
+    // devAlias.social.instagram = "@JohnnyUli2";
+
+    console.log("developer: ", developer);
+    console.log("devAlias: ", devAlias);
+    // both are affected and you will need to find a way to clone deeply through a function
+
+    // cheap way but this is basically "poor man's deep clone"
+    const devAlias2 = JSON.parse(JSON.stringify(developer));
+    devAlias2.social.instagram = "@JohnnyUliza";
+    
+    console.log("developer: ", developer);
+    console.log("devAlias2: ", devAlias2);
+    // original is unaffected!
+
 
   </script>
 
