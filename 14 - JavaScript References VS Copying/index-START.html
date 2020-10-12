@@ -8,6 +8,24 @@
 
   <script>
     // start with strings, numbers and booleans
+    
+    // change one variable and neither affects each other
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2);
+    age = 300;
+    console.log(age, age2);
+    age2 = 200;
+    console.log(age, age2);
+
+    // same thing goes for strings
+    let name = "fred";
+    let name2 = name;
+    console.log(name, name2);
+    name = "freddy";
+    console.log(name, name2);
+    name2 = "froddy";
+    console.log(name, name2);
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
