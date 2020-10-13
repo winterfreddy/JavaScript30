@@ -39,7 +39,18 @@
     }
     console.log(item);
     items.push(item);
+    populateList(items, itemsList);
     this.reset(); // resets the page aka "refresh"
+  }
+
+  function populateList(plates = [], platesList) {
+    platesList.innerHTML = plates.map( (plate, i) => {
+      return `
+        <li>
+          <label for="">${plate.text}</label>
+        </li>
+      `;
+    }).join('');
   }
 
   addItems.addEventListener('submit', addItem);
