@@ -37,7 +37,7 @@
       text,
       done: false
     }
-    console.log(item);
+    // console.log(item);
     items.push(item);
     populateList(items, itemsList);
 
@@ -59,7 +59,19 @@
     // for the checking to work, make sure that the 'for' attribute tag in label is linked to the id in the input tag
   }
 
+  function toggleDone(e) {
+    // skip this unless its an input
+    if(!e.target.matches('input')) return;
+    
+    const el = e.target;
+    const index = el.dataset.index;
+    items[index].done = !items[index].done;
+    localStorage.setItem('items', JSON.stringify(items));
+    populateList(items, itemsList);
+  }
+
   addItems.addEventListener('submit', addItem);
+  itemsList.addEventListener('click', toggleDone);
 
   populateList(items, itemsList);
 
