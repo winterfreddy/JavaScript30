@@ -30,6 +30,20 @@
   const itemsList = document.querySelector('.plates');
   const items = [];
 
+  function addItem(e) {
+    e.preventDefault(); // prevents refreshing page after submit
+    const text = (this.querySelector('[name=item]')).value;
+    const item = {
+      text,
+      done: false
+    }
+    console.log(item);
+    items.push(item);
+    this.reset(); // resets the page aka "refresh"
+  }
+
+  addItems.addEventListener('submit', addItem);
+
 </script>
 
 
