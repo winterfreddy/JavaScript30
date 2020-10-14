@@ -32,12 +32,18 @@
       <input type="text" name="item" placeholder="Item Name" required>
       <input type="submit" value="+ Add Item">
     </form>
+    <div>
+      <button class="check-all" >Check all</button>
+      <button class="uncheck-all">Uncheck all</button>
+    </div>
   </div>
 
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
   const items = JSON.parse(localStorage.getItem('items')) || []; // check if there's anything in local storage or not
+  const checkAll = document.querySelector('.check-all');
+  const uncheckAll = document.querySelector('.uncheck-all');
 
   function addItem(e) {
     e.preventDefault(); // prevents refreshing page after submit
@@ -79,8 +85,22 @@
     populateList(items, itemsList);
   }
 
+  function checkEvery(e) {
+    itemsList.innerHTML = items.map((plate, i) => {
+      return `
+        <li>
+          <input type="checkbox" data-index=${i} id="item${i}" checked />
+          <label for="item${i}">${plate.text}</label>
+        </li>
+      `;
+    }).join('');
+
+    localStorage.setItem('items', JSON.stringify(items));
+  }
+
   addItems.addEventListener('submit', addItem);
   itemsList.addEventListener('click', toggleDone);
+  checkAll.addEventListener('click', checkEvery);
 
   populateList(items, itemsList);
 
@@ -89,5 +109,3 @@
 
 </body>
 </html>
-
-// future work, uncheck all, check all features
