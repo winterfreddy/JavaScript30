@@ -191,12 +191,14 @@
         // const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
 
         // take all of the time stamps and convert them into seconds
-        const seconds = timeNodes
+        const secondArray = timeNodes
                           .map( node => node.dataset.time)
                           .map( entry => {
                             const [mins, secs] = entry.split(':').map(parseFloat);
                             return (mins * 60) + secs;
                           });
+
+        const totalSeconds = secondArray.reduce( (total, secondEntry) => total + secondEntry );
 
       </script>
 
