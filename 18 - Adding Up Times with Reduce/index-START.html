@@ -184,6 +184,14 @@
       </ul>
 
       <script>
+        // spread out...
+        const timeNodes = [...document.querySelectorAll('[data-time]')];
+
+        // or convert
+        // const timeNodes = Array.from(document.querySelectorAll('[data-time]'));
+
+        // take all of the time stamps and convert them into seconds
+        const seconds = timeNodes.map( node => node.dataset.time);
 
       </script>
 
