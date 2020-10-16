@@ -198,8 +198,17 @@
                             return (mins * 60) + secs;
                           });
 
-        const totalSeconds = secondArray.reduce( (total, secondEntry) => total + secondEntry );
+        // use array reduce to grab total seconds
+        let totalSeconds = secondArray.reduce( (total, secondEntry) => total + secondEntry );
 
+        const hours = Math.floor(totalSeconds/3600);
+        totalSeconds = totalSeconds % 3600; // for minutes
+
+        const minutes = Math.floor(totalSeconds/60);
+        totalSeconds = totalSeconds % 60; // for seconds
+
+        console.log(hours, minutes, totalSeconds);
+        
       </script>
 
     </body>
