@@ -12,6 +12,10 @@ function getVideo() {
             video.srcObject = localMediaStream;
             video.play();
         })
+        .catch( err => {
+            // catches when user doesn't allow video permissions
+            console.log("Oh no!", err);
+        })
 }
 
 getVideo();
