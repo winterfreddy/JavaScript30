@@ -30,4 +30,10 @@ function paintToCanvas() {
     }, 20);
 }
 
+// how we can take a photo
+function takePhoto() {
+    snap.currentTime = 0;
+    snap.play();
+}
+
 getVideo();
