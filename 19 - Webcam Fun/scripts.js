@@ -18,6 +18,7 @@ function getVideo() {
         })
 }
 
+// how you can render the video feed onto canvas
 function paintToCanvas() {
     const width = video.videoWidth;
     const height = video.videoHeight;
