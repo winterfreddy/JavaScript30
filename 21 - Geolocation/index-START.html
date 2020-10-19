@@ -66,6 +66,9 @@
       console.log(data);
       speed.textContent = data.coords.speed;
       arrow.style.transform = `rotate(${data.coords.heading}deg)`;
+    }, (err) => {
+      console.log(err);
+      alert("Please enable location for this app");
     })
   </script>
 </body>
