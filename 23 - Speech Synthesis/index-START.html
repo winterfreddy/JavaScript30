@@ -46,6 +46,12 @@
   // chosen voice will update to find the correct voice linked
   function setVoice() {
     msg.voice = voices.find( voice => voice.name === this.value );
+    toggle();
+  }
+
+  function toggle() {
+    speechSynthesis.cancel();
+    speechSynthesis.speak(msg);
   }
 
   speechSynthesis.addEventListener('voiceschanged', populateVoices);
