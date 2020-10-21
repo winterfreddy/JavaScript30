@@ -40,7 +40,9 @@
   // render all possible voices in a dropdown
   function populateVoices() {
     voices = this.getVoices();
-    voicesDropdown.innerHTML = voices.map( voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`).join('');
+    voicesDropdown.innerHTML = voices.filter(voice => voice.lang.includes('en'))
+      .map( voice => `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`)
+      .join('');
   }
 
   // chosen voice will update to find the correct voice linked
