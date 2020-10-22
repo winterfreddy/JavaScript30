@@ -59,9 +59,11 @@
 
   function adjustNav() {
     if(window.scrollY >= topOfNav) {
+      document.body.style.paddingTop = navbar.offsetHeight + 'px';
       document.body.classList.add('adjust-nav');
     }
     else {
+      document.body.style.paddingTop = 0;
       document.body.classList.remove('adjust-nav');
     }
   }
