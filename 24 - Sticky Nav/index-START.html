@@ -54,6 +54,19 @@
   </div>
 
 <script>
+  const navbar = document.querySelector('#main');
+  const topOfNav = navbar.offsetTop;
+
+  function adjustNav() {
+    if(window.scrollY >= topOfNav) {
+      document.body.classList.add('adjust-nav');
+    }
+    else {
+      document.body.classList.remove('adjust-nav');
+    }
+  }
+
+  window.addEventListener('scroll', adjustNav);
 
 </script>
 
