@@ -45,8 +45,9 @@
 
   const divs = document.querySelectorAll('div');
 
-  function logText() {
+  function logText(e) {
     console.log(this.classList.value);
+    e.stopPropagation(); // this stops the propagation and will not console log any further
   }
 
   // this propogates to where you click, and then bubble back up and console logging at the same time. This is the default behavior.
