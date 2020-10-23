@@ -54,7 +54,10 @@
   // divs.forEach(div => div.addEventListener('click', logText));
 
   // this propogates to where you click, and then bubble back up. BUT it console logs as it propogates inward.
-  divs.forEach(div => div.addEventListener('click', logText, { capture: true }));
+  // divs.forEach(div => div.addEventListener('click', logText, { capture: true }));
+
+  // using once to only activate the click once through the third option in addEventListener params
+  divs.forEach(div => div.addEventListener('click', logText, { capture: false, once: true }));
 
 
 </script>
