@@ -43,6 +43,19 @@
 <button></button>
 <script>
 
+  const divs = document.querySelectorAll('div');
+
+  function logText() {
+    console.log(this.classList.value);
+  }
+
+  // this propogates to where you click, and then bubble back up and console logging at the same time. This is the default behavior.
+  // divs.forEach(div => div.addEventListener('click', logText));
+
+  // this propogates to where you click, and then bubble back up. BUT it console logs as it propogates inward.
+  divs.forEach(div => div.addEventListener('click', logText, { capture: true }));
+
+
 </script>
 </body>
 </html>
