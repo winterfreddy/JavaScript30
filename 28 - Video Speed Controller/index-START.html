@@ -15,6 +15,39 @@
   </div>
 
 <script>
+
+  const speed = document.querySelector('.speed');
+  const bar = document.querySelector('.speed-bar');
+  const video = document.querySelector('.flex');
+
+  // can do this inside here
+  // speed.addEventListener('mousemove', function(e) {
+  //   const y = e.pageY - this.offsetTop;
+  //   const percentage = y / this.offsetHeight;
+  //   const min = 0.5;
+  //   const max = 5;
+  //   const height = Math.round(percentage * 100) + '%';
+  //   const playbackRate = percentage * (max - min) + min;
+  //   bar.style.height = height;
+  //   bar.textContent = playbackRate.toFixed(2) + 'x';
+  //   video.playbackRate = playbackRate;
+  // });
+
+  // or in separate functions
+  function adjustPlaybackRate(e) {
+    const y = e.pageY - this.offsetTop;
+    const percentage = y / this.offsetHeight;
+    const min = 0.5;
+    const max = 5;
+    const height = Math.round(percentage * 100) + '%';
+    const playbackRate = percentage * (max - min) + min;
+    bar.style.height = height;
+    bar.textContent = playbackRate.toFixed(2) + 'x';
+    video.playbackRate = playbackRate;
+  }
+
+  speed.addEventListener('mousemove', adjustPlaybackRate);
+
 </script>
 </body>
 </html>
