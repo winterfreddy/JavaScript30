@@ -3,6 +3,7 @@ let countdown;
 function timer(seconds) {
     const now = Date.now();
     const then = now + seconds * 1000;
+    displayTimeLeft(seconds);
 
     countdown = setInterval( () => {
         const secondsLeft = Math.round((then - Date.now()) / 1000);
@@ -14,6 +15,10 @@ function timer(seconds) {
         }
 
         // display the seconds left
-        console.log(secondsLeft);
+        displayTimeLeft(secondsLeft);
     }, 1000);
+}
+
+function displayTimeLeft(seconds) {
+    console.log(seconds);
 }
